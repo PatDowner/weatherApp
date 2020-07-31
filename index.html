@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Dashboard</title>
+  <!-- reset css file -->
+  <link rel="stylesheet" href="./Assets/reset.css">
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- my css -->
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+
+<body>
+  <div class="card text-center">
+    <header class="card-header">
+      Weather Dashboard
+    </header>
+    <div class="row card-body">
+      <!-- Left side-bar -->
+      <!-- I'd love to find some boostrap stuff that has this collapse on narrow screens -->
+      <aside class="col-sm-3">
+        <form>
+          <p>
+            <!-- if I can, should include a state option -->
+            <label for="city">Search for a city</label>
+            <input type="text" name="city" id="city">
+          </p>
+          <p>
+            <button id="search">Search</button>
+          </p>
+        </form>
+
+        <!-- other cities -->
+        <div class="list-group">
+          <h5 class="card-header">Major Cities:</h5>
+          <a href="#" class="list-group-item list-group-item-action">Austin</a>
+          <a href="#" class="list-group-item list-group-item-action">Chicago</a>
+          <a href="#" class="list-group-item list-group-item-action">New York</a>
+          <a href="#" class="list-group-item list-group-item-action">Boston</a>
+          <a href="#" class="list-group-item list-group-item-action">Orlando</a>
+          <a href="#" class="list-group-item list-group-item-action">San Francisco</a>
+          <a href="#" class="list-group-item list-group-item-action">Seattle</a>
+          <a href="#" class="list-group-item list-group-item-action">Denver</a>
+          <a href="#" class="list-group-item list-group-item-action active">Atlanta</a>
+          
+        </div>
+      </aside>
+
+
+      <main class="col-sm-8">
+        <!-- today's forecast -->
+        <section id="weather" class="row card">
+          <h5 id="searchedCity" class="card-header">Atlanta (8/15/2019)</h5>
+          <div class="card-body">
+            <h5 class="card-title">Today's Forecast:</h5>
+            <p id="today" class="card-text">
+              details
+            </p>
+              
+          </div>
+        </section>
+
+        <!-- 5-day forecast -->
+        <div>
+          <h5>5-Day Forecast:</h5>
+        </div>
+        <section id="forecast" class="card-group row">
+          <!-- day-i -->
+          <div id="day1" class="card">
+            <div class="card-body">
+              <h5 id="day1-day" class="card-title">Date</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Sunny</h6>
+              <p class="card-text">
+                <p id="day1-icon">icon</p>
+                <p id="day1-temp">Temp:x</p>
+                <p id="day1-humidity">Humidity: x</p>
+              </p>
+            </div>
+          </div>
+          <!-- day-i -->
+          <div id="day2" class="card">
+            <div class="card-body">
+              <h5 id="day2-day" class="card-title">Date</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Sunny</h6>
+              <p class="card-text">
+                <p id="day2-icon">icon</p>
+                <p id="day2-temp">Temp:x</p>
+                <p id="day2-humidity">Humidity: x</p>
+              </p>
+            </div>
+          </div>
+          <!-- day-i -->
+          <div id="day3" class="card">
+            <div class="card-body">
+              <h5 id="day3-day" class="card-title">Date</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Sunny</h6>
+              <p class="card-text">
+                <p id="day3-icon">icon</p>
+                <p id="day3-temp">Temp:x</p>
+                <p id="day3-humidity">Humidity: x</p>
+              </p>
+            </div>
+          </div>
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </main>
+
+    </div>
+
+    <footer class="card-footer text-muted">
+      Powered by <a href="https://getbootstrap.com/">Bootstrap</a> and <a
+        href="https://openweathermap.org/api">OpenWeather API</a>
+    </footer>
+  </div>
+
+
+
+
+
+
+
+
+  <!-- axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <!-- my JS -->
+  <script src="./assets/app.js"></script>
+
+</body>
+
+</html>
