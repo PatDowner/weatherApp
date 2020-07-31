@@ -1,0 +1,11 @@
+aside {
+  opacity: .8;
+}
+
+#header {
+  font-size: 36px;
+}
+
+.days {
+  max-width: 18rem;
+}

@@ -1,3 +1,26 @@
+
+
+for (let i = 0; i < 5; i++) {
+
+  let forecastDay = document.createElement('div')
+  forecastDay.className = 'card text-white bg-primary days'
+  forecastDay.id = `day${i}`
+  forecastDay.innerHTML = `
+  <div class="card-body">
+  <h5 id="day${i}-day" class="card-title">Date</h5>
+  <h6 class="card-subtitle mb-2 text-white">Sunny</h6>
+  <p class="card-text">
+  <p id="day${i}-icon">icon</p>
+  <p id="day${i}-temp">Temp:x</p>
+  <p id="day${i}-humidity">Humidity: x</p>
+  </p>
+  </div>
+  `
+
+  document.getElementById('forecast').append(forecastDay)
+}
+
+
 document.getElementById('search').addEventListener('click', event => {
   event.preventDefault()
 

@@ -17,14 +17,14 @@
 </head>
 
 <body>
-  <div class="card text-center">
-    <header class="card-header">
+  <div class="card">
+    <header id="header" class="card-header text-center bg-success">
       Weather Dashboard
     </header>
     <div class="row card-body">
       <!-- Left side-bar -->
       <!-- I'd love to find some boostrap stuff that has this collapse on narrow screens -->
-      <aside class="col-sm-3">
+      <aside class="col-sm-2 py-4 bg-warning">
         <form>
           <p>
             <!-- if I can, should include a state option -->
@@ -53,10 +53,10 @@
       </aside>
 
 
-      <main class="col-sm-8">
+      <main class="col-sm-8 ml-5">
         <!-- today's forecast -->
-        <section id="weather" class="row card">
-          <h5 id="searchedCity" class="card-header">Atlanta (8/15/2019)</h5>
+        <section id="weather" class="row card border-primary">
+          <h5 id="searchedCity" class="card-header bg-primary">Atlanta (8/15/2019)</h5>
           <div class="card-body">
             <h5 class="card-title">Today's Forecast:</h5>
             <p id="today" class="card-text">
@@ -67,48 +67,10 @@
         </section>
 
         <!-- 5-day forecast -->
-        <div>
+        <div class="mt-5">
           <h5>5-Day Forecast:</h5>
         </div>
-        <section id="forecast" class="card-group row">
-          <!-- day-i -->
-          <div id="day1" class="card">
-            <div class="card-body">
-              <h5 id="day1-day" class="card-title">Date</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Sunny</h6>
-              <p class="card-text">
-                <p id="day1-icon">icon</p>
-                <p id="day1-temp">Temp:x</p>
-                <p id="day1-humidity">Humidity: x</p>
-              </p>
-            </div>
-          </div>
-          <!-- day-i -->
-          <div id="day2" class="card">
-            <div class="card-body">
-              <h5 id="day2-day" class="card-title">Date</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Sunny</h6>
-              <p class="card-text">
-                <p id="day2-icon">icon</p>
-                <p id="day2-temp">Temp:x</p>
-                <p id="day2-humidity">Humidity: x</p>
-              </p>
-            </div>
-          </div>
-          <!-- day-i -->
-          <div id="day3" class="card">
-            <div class="card-body">
-              <h5 id="day3-day" class="card-title">Date</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Sunny</h6>
-              <p class="card-text">
-                <p id="day3-icon">icon</p>
-                <p id="day3-temp">Temp:x</p>
-                <p id="day3-humidity">Humidity: x</p>
-              </p>
-            </div>
-          </div>
-
-        </section>
+        <section id="forecast" class="card-group row"></section>
 
 
 
