@@ -12,6 +12,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
   <!-- my css -->
   <link rel="stylesheet" href="./assets/style.css">
 </head>
@@ -21,24 +25,29 @@
     <header id="header" class="card-header text-center bg-success">
       Weather Dashboard
     </header>
-    <div class="row card-body">
+    <div class="row my-2 card-body">
       <!-- Left side-bar -->
       <!-- I'd love to find some boostrap stuff that has this collapse on narrow screens -->
-      <aside class="col-sm-2 py-4 bg-warning">
+      <aside class="col-sm-2 py-4 ml-4 bg-warning">
         <form>
-          <p>
+          <div class="input-group mb-3">
             <!-- if I can, should include a state option -->
-            <label for="city">Search for a city</label>
-            <input type="text" name="city" id="city">
+            <input type="text" class="form-control" placeholder="city name" aria-label="city name"
+              aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2"><i class="fas fa-search-location"></i></span>
+            </div>
+          </div>
+          <p>
           </p>
           <p>
-            <button id="search">Search</button>
+            <button id="search" type="button" class="btn btn-primary">Search</button>
           </p>
         </form>
 
         <!-- other cities -->
         <div class="list-group">
-          <h5 class="card-header">Major Cities:</h5>
+          <h5 class="card-header text-center">Major Cities</h5>
           <a href="#" class="list-group-item list-group-item-action">Austin</a>
           <a href="#" class="list-group-item list-group-item-action">Chicago</a>
           <a href="#" class="list-group-item list-group-item-action">New York</a>
@@ -101,9 +110,9 @@
 
     </div>
 
-    <footer class="card-footer text-muted">
-      Powered by <a href="https://getbootstrap.com/">Bootstrap</a> and <a
-        href="https://openweathermap.org/api">OpenWeather API</a>
+    <footer class="card-footer text-muted text-center">
+      Powered by <a href="https://getbootstrap.com/">Bootstrap</a>, <a
+        href="https://openweathermap.org/api">OpenWeather API</a>, & <a href="https://fontawesome.com/">Font Awesome</a>
     </footer>
   </div>
 

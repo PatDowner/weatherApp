@@ -6,6 +6,10 @@ aside {
   font-size: 36px;
 }
 
+#search {
+  width: 100%;
+}
+
 .days {
   max-width: 18rem;
 }

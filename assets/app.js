@@ -10,7 +10,7 @@ for (let i = 0; i < 5; i++) {
   <h5 id="day${i}-day" class="card-title">Date</h5>
   <h6 class="card-subtitle mb-2 text-white">Sunny</h6>
   <p class="card-text">
-  <p id="day${i}-icon">icon</p>
+  <p id="day${i}-icon" class="text-center"><i class="fas fa-sun"></i></p>
   <p id="day${i}-temp">Temp:x</p>
   <p id="day${i}-humidity">Humidity: x</p>
   </p>
