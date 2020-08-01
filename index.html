@@ -14,7 +14,7 @@
 
   <!-- font awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
   <!-- my css -->
   <link rel="stylesheet" href="./assets/style.css">
@@ -30,16 +30,8 @@
       <!-- I'd love to find some boostrap stuff that has this collapse on narrow screens -->
       <aside class="col-sm-2 py-4 ml-4 bg-warning">
         <form>
-          <div class="input-group mb-3">
-            <!-- if I can, should include a state option -->
-            <input type="text" class="form-control" placeholder="city name" aria-label="city name"
-              aria-describedby="basic-addon2">
-            <div class="input-group-append">
-              <span class="input-group-text" id="basic-addon2"><i class="fas fa-search-location"></i></span>
-            </div>
-          </div>
-          <p>
-          </p>
+          <label for="city">City:</label>
+          <input type="text" name="city" id="city">
           <p>
             <button id="search" type="button" class="btn btn-primary">Search</button>
           </p>
@@ -47,7 +39,7 @@
 
         <!-- other cities -->
         <div class="list-group">
-          <h5 class="card-header text-center">Major Cities</h5>
+          <h5 class="card-header text-center">Recent Searches</h5>
           <a href="#" class="list-group-item list-group-item-action">Austin</a>
           <a href="#" class="list-group-item list-group-item-action">Chicago</a>
           <a href="#" class="list-group-item list-group-item-action">New York</a>
@@ -57,29 +49,21 @@
           <a href="#" class="list-group-item list-group-item-action">Seattle</a>
           <a href="#" class="list-group-item list-group-item-action">Denver</a>
           <a href="#" class="list-group-item list-group-item-action active">Atlanta</a>
-          
+
         </div>
       </aside>
 
 
       <main class="col-sm-8 ml-5">
         <!-- today's forecast -->
-        <section id="weather" class="row card border-primary">
-          <h5 id="searchedCity" class="card-header bg-primary">Atlanta (8/15/2019)</h5>
-          <div class="card-body">
-            <h5 class="card-title">Today's Forecast:</h5>
-            <p id="today" class="card-text">
-              details
-            </p>
-              
-          </div>
+        <section id="weather">
         </section>
 
         <!-- 5-day forecast -->
-        <div class="mt-5">
+        <div id="5-day" class="mt-5 hide">
           <h5>5-Day Forecast:</h5>
         </div>
-        <section id="forecast" class="card-group row"></section>
+        <section id="forecastCards" class="card-group row"></section>
 
 
 
@@ -111,8 +95,8 @@
     </div>
 
     <footer class="card-footer text-muted text-center">
-      Powered by <a href="https://getbootstrap.com/">Bootstrap</a>, <a
-        href="https://openweathermap.org/api">OpenWeather API</a>, & <a href="https://fontawesome.com/">Font Awesome</a>
+      Powered by <a href="https://getbootstrap.com/">Bootstrap</a>, <a href="https://openweathermap.org/api">OpenWeather
+        API</a>, & <a href="https://fontawesome.com/">Font Awesome</a>
     </footer>
   </div>
 

@@ -13,3 +13,7 @@ aside {
 .days {
   max-width: 18rem;
 }
+
+.hide {
+  display: none;
+}
