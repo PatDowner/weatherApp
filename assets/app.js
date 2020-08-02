@@ -1,6 +1,7 @@
 let searches = []
 
 document.getElementById('search').addEventListener('click', event => {
+
   event.preventDefault()
   console.log('clicked')
 
