@@ -25,10 +25,10 @@
     <header id="header" class="card-header text-center bg-success">
       Weather Dashboard
     </header>
-    <div class="row my-2 card-body">
+    <div class="row my-2 mx-2 card-body">
       <!-- Left side-bar -->
       <!-- I'd love to find some boostrap stuff that has this collapse on narrow screens -->
-      <aside class="col-sm-2 py-4 ml-4 bg-warning">
+      <aside class="col-sm-2 py-4 ml-2 bg-warning">
         <form>
           <label for="city">City:</label>
           <input type="text" name="city" id="city">
@@ -54,7 +54,7 @@
       </aside>
 
 
-      <main class="col-sm-8 ml-5">
+      <main class="col-sm-9 ml-5">
         <!-- today's forecast -->
         <section id="weather">
         </section>
@@ -120,6 +120,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+
+  <!-- moment cdn -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
 
   <!-- my JS -->
   <script src="./assets/app.js"></script>
