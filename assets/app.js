@@ -39,7 +39,7 @@ const todayWeather = (x, y) => {
         </div>
       </div>
       <div class="card-body">
-        <h2 class="card-title">Today's Forecast:</h2>
+        <h2 class="card-title">Current Weather:</h2>
         <div class ="row">
           <div class="col-sm-6">
             <p id="today" class="card-text">
