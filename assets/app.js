@@ -1,5 +1,8 @@
-let searches = []
+let searches = JSON.parse(localStorage.getItem('searches')) || []
 let city = ''
+let itemObj = ''
+
+
 
 const todayWeather = () => {
   console.log('clicked')
@@ -79,8 +82,16 @@ const forecastWeather = () => {
 // if click search button
 document.getElementById('searchBtn').addEventListener('click', event => {
   event.preventDefault()
+
+
   todayWeather()
   forecastWeather()
+
+  // store search in searches
+
+  searches.push(city)
+  console.log(searches)
+  localStorage.setItem('searches', JSON.stringify(searches))
 })
 
 // if click enter while in search bar
