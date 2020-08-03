@@ -29,24 +29,28 @@ const todayWeather = (x) => {
       // Set last 4 rows of today's forecast in a left column and set the right column with the corresponding icon
       // also set the city & date in 2 columns. Left column city left-aligned, right column date right-aligned
       document.getElementById('weather').innerHTML = `
-          <div class="card-header bg-primary">
-            <h1 id="searchedCity">${res.data.name}</h1>
-            <h2 id="date">${moment().format('l')}</h2>
+          <div class="card-header bg-primary row">
+            <div class="col-sm-6 px-0">
+              <h1 id="searchedCity">${res.data.name}</h1>
+            </div>
+            <div class="col-sm-6 text-right">
+              <h2 id="date">${moment().format('l')}</h2>
+            </div>
           </div>
           <div class="card-body">
+          <h2 class="card-title">Today's Forecast:</h2>
             <div class ="row">
               <div class="col-sm-6">
-                <h2 class="card-title">Today's Forecast:</h2>
                 <p id="today" class="card-text">
-                  <h3 id="today-weather">Weather: ${res.data.weather[0].description}</h3>
+                  <h3 id="today-weather">${res.data.weather[0].description}</h3>
                   <h4 id="today-temp">Temperature: ${res.data.main.temp}</h4>
                   <h4 id="today-humidity">Humidity: ${res.data.main.humidity}</h4>
                   <h4 id="today-wind">Wind Speed: ${res.data.wind.speed}</h4>
                 </p>
               </div>
               <div class="col-sm-6">
-                <p id="today-icon" class="text-center">
-                  <img src="http://openweathermap.org/img/w/${res.data.weather[0].icon}.png"
+                <p >
+                  <img id="today-icon" src="http://openweathermap.org/img/w/${res.data.weather[0].icon}.png"
                 </p>
               </div>
           </div>
@@ -70,14 +74,14 @@ const forecastWeather = (x) => {
         forecastElem.className = 'card text-white bg-primary days'
         forecastElem.id = `day${i}`
         forecastElem.innerHTML = `
-        <div class="card-body">
+        <div class="card-body px-2">
           <h5 id="day${i}-day" class="card-title day${i}-day">${moment(forecast[i].dt_txt).format('dddd')}, ${moment(forecast[i].dt_txt).format('l')}</h5>
-          <h6 id="day${i}-weather" class="card-subtitle mb-2 text-white">Weather: ${forecast[i].weather[0].description}</h6>
+          <h6 id="day${i}-weather" class="card-subtitle mb-2 text-white">${forecast[i].weather[0].description}</h6>
           <div class="card-text">
-            <p id="day${i}-icon" class="text-center"><img src="http://openweathermap.org/img/w/${forecast[i].weather[0].icon}.png"</p>
-            <p id="day${i}-temp">Temperature: ${forecast[i].main.temp}</p>
-            <p id="day${i}-humidity">Humidity: ${forecast[i].main.humidity}</p>
-            <p id="day${i}-wind">Wind Speed: ${forecast[i].wind.speed}</p>
+            <p id="day${i}-icon" class="text-center icon mb-1"><img src="http://openweathermap.org/img/w/${forecast[i].weather[0].icon}.png"</p>
+            <p id="day${i}-temp" class="mb-1">Temperature: ${forecast[i].main.temp}</p>
+            <p id="day${i}-humidity" class="mb-1">Humidity: ${forecast[i].main.humidity}</p>
+            <p id="day${i}-wind" class="mb-1">Wind Speed: ${forecast[i].wind.speed}</p>
           </div>
         </div>
         `

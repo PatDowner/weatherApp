@@ -17,3 +17,18 @@ aside {
 .hide {
   display: none;
 }
+
+#today-icon {
+  width: 40%;
+  vertical-align: middle;
+}
+
+.icon {
+  width: 100%;
+}
+
+#five-day {
+  padding: 0px;
+  width: 102%;
+  margin-left: -14px;
+}
