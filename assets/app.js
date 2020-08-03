@@ -21,13 +21,21 @@ document.getElementById('search').addEventListener('click', event => {
             <h2 id="date">${moment().format('l')}</h2>
           </div>
           <div class="card-body">
-            <h2 class="card-title">Today's Forecast:</h2>
-            <p id="today" class="card-text">
-              <h3 id="today-weather">Weather: ${res.data.weather[0].description}</h3>
-              <h4 id="today-temp">Temperature: ${res.data.main.temp}</h4>
-              <h4 id="today-humidity">Humidity: ${res.data.main.humidity}</h4>
-              <h4 id="today-wind">Wind Speed: ${res.data.wind.speed}</h4>
-            </p>
+            <div class ="row">
+              <div class="col-sm-6">
+                <h2 class="card-title">Today's Forecast:</h2>
+                <p id="today" class="card-text">
+                  <h3 id="today-weather">Weather: ${res.data.weather[0].description}</h3>
+                  <h4 id="today-temp">Temperature: ${res.data.main.temp}</h4>
+                  <h4 id="today-humidity">Humidity: ${res.data.main.humidity}</h4>
+                  <h4 id="today-wind">Wind Speed: ${res.data.wind.speed}</h4>
+                </p>
+              </div>
+              <div class="col-sm-6">
+                <p id="today-icon" class="text-center">
+                  <img src="http://openweathermap.org/img/w/${res.data.weather[0].icon}.png"
+                </p>
+              </div>
           </div>
         `
     })
@@ -45,12 +53,11 @@ document.getElementById('search').addEventListener('click', event => {
         let forecastElem = document.createElement('div')
         forecastElem.className = 'card text-white bg-primary days'
         forecastElem.id = `day${i}`
-        console.log(forecast[i].weather.description)
-        console.log(forecast[i].weather.icon)
+        console.log(forecast[i].weather[0].description)
+        console.log(forecast[i].weather[0].icon)
         forecastElem.innerHTML = `
         <div class="card-body">
           <h5 id="day${i}-day" class="card-title day${i}-day">${moment(forecast[i].dt_txt).format('dddd')}, ${moment(forecast[i].dt_txt).format('l')}</h5>
-
           <h6 id="day${i}-weather" class="card-subtitle mb-2 text-white">Weather: ${forecast[i].weather[0].description}</h6>
           <div class="card-text">
             <p id="day${i}-icon" class="text-center"><img src="http://openweathermap.org/img/w/${forecast[i].weather[0].icon}.png"</p>
