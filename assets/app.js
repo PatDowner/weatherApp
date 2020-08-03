@@ -63,8 +63,7 @@ const todayWeather = (x, y) => {
       let lat = res.data.coord.lat
       axios.get(`http://api.openweathermap.org/data/2.5/uvi?appid=1dd25ac798a84daed3b612ef4b3c9a3e&lat=${lat}&lon=${lon}`)
         .then(res => {
-          // let uv = res.data.value
-          let uv = 11
+          let uv = res.data.value
           document.getElementById('uvIndex').textContent = uv
 
           // Colors and color ranges taken from: https://www.epa.gov/sites/production/files/documents/uviguide.pdf
