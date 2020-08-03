@@ -77,7 +77,7 @@ const todayWeather = (x, y) => {
       let lat = res.data.coord.lat
 
       // reference to Open Weather API that contains UV Index info
-      axios.get(`http://api.openweathermap.org/data/2.5/uvi?appid=1dd25ac798a84daed3b612ef4b3c9a3e&lat=${lat}&lon=${lon}`)
+      axios.get(`https://api.openweathermap.org/data/2.5/uvi?appid=1dd25ac798a84daed3b612ef4b3c9a3e&lat=${lat}&lon=${lon}`)
         .then(res => {
           // setting part of the request as a variable to reduce repetition
           let uv = Math.round(res.data.value)
