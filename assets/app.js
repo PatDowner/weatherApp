@@ -82,7 +82,7 @@ const todayWeather = (x, y) => {
           // setting part of the request as a variable to reduce repetition
           let uv = Math.round(res.data.value)
 
-          // sets text content of uvIndex to the value from the API ---- doesn't display on live version of site
+          // sets text content of uvIndex to the value from the API
           document.getElementById('uvIndex').textContent = uv
 
           // Colors and color ranges below taken from: https://www.epa.gov/sites/production/files/documents/uviguide.pdf are used to indicate levels
@@ -113,29 +113,33 @@ const forecastWeather = (x, y) => {
 
       // loop to create the 5-day forecast
       // it seems like this data isn't accurate. I think the forecast one counts based on current time. I don't think we can set a static i value to start with. Is this a problem?
-      for (let i = 3; i < forecast.length; i += 8) {
+      for (let i = 0; i < forecast.length; i++) {
         // create a div forecastElem
-        let forecastElem = document.createElement('div')
-        // set the class names for that div
-        forecastElem.className = 'card text-white bg-primary days'
-        // give the div an id
-        forecastElem.id = `day${i}`
+        if (forecast[i].dt_txt.indexOf('15:00:00') !== -1) {
 
-        // set the html for the div. Contains day of the week, date, general weather description, an icon representing the weather, temperature, humidity, and wind
-        forecastElem.innerHTML = `
+
+          let forecastElem = document.createElement('div')
+          // set the class names for that div
+          forecastElem.className = 'card text-white bg-primary days'
+          // give the div an id
+          forecastElem.id = `day${i}`
+
+          // set the html for the div. Contains day of the week, date, general weather description, an icon representing the weather, temperature, humidity, and wind
+          forecastElem.innerHTML = `
         <div class="card-body px-2">
           <h5 id="day${i}-day" class="card-title day${i}-day">${moment(forecast[i].dt_txt).format('dddd')}, ${moment(forecast[i].dt_txt).format('l')}</h5>
           <h6 id="day${i}-weather" class="card-subtitle mb-2 text-white">${forecast[i].weather[0].description}</h6>
           <div class="card-text">
             <p id="day${i}-icon" class="text-center icon mb-1"><img src="http://openweathermap.org/img/w/${forecast[i].weather[0].icon}.png"</p>
-            <p id="day${i}-temp" class="mb-1">Temperature: ${Math.round(forecast[i].main.temp)}&#176;F</p>
+            <p id="day${i}-temp" class="mb-1">Temperature: ${Math.round(forecast[i].main.temp_max)}&#176;F</p>
             <p id="day${i}-humidity" class="mb-1">Humidity: ${Math.round(forecast[i].main.humidity)}%</p>
             <p id="day${i}-wind" class="mb-1">Wind: ${Math.round(forecast[i].wind.speed)} mph</p>
           </div>
         </div>
         `
-        // place the forecastElem div at the end of the item with the id forecastCards
-        document.getElementById('forecastCards').append(forecastElem)
+          // place the forecastElem div at the end of the item with the id forecastCards
+          document.getElementById('forecastCards').append(forecastElem)
+        }
       }
       // shows item with the id 5-day (hidden if searches[] is blank)
       document.getElementById('5-day').classList.remove('hide')
@@ -213,11 +217,13 @@ document.getElementById('searchBtn').addEventListener('click', event => {
   forecastWeather(city, state)
   // store searched city in localStorage
   storeSearch(city, state)
+
 })
 
 // listen for a certain key entry while in search bar... (currently not working)
 document.getElementById('citySrc').addEventListener('keyup', event => {
   event.preventDefault()
+
 
   console.log(event.keyCode)
 
