@@ -22,17 +22,23 @@
 
 <body>
   <div class="card">
+    <!-- header -->
     <header id="header" class="card-header text-center bg-dark text-light">
       Weather Dashboard
     </header>
+
+    <!-- the rest of the page beside the header & footer -->
     <div class="row my-2 mx-2 card-body">
+
       <!-- Left side-bar -->
-      <!-- I'd love to find some boostrap stuff that has this collapse on narrow screens -->
       <aside class="col-sm-2 py-4 ml-2 bg-warning">
+        <!-- Search form -->
         <form>
           <div class="form-group">
+            <!-- field to type city name -->
             <label for="citySrc">City:</label>
             <input type="text" class="form-control" name="citySrc" id="citySrc" placeholder="city name">
+            <!-- field to select a state from the dropdown list -->
             <label for="stateSrc">State:</label>
             <select class="form-control" id="stateSrc">
               <option selected>Choose...</option>
@@ -60,26 +66,26 @@
               <option>MI</option>
               <option>MN</option>
               <option>MS</option>
-              <option>MO</option>              
-              <option>MT</option>              
-              <option>NE</option>              
-              <option>NV</option>              
-              <option>NH</option>              
-              <option>NJ</option>              
-              <option>NM</option>              
-              <option>NY</option>              
-              <option>NC</option>              
-              <option>ND</option>              
-              <option>OH</option>              
-              <option>OK</option>              
-              <option>OR</option>              
-              <option>PA</option>              
-              <option>RI</option>              
-              <option>SC</option>              
-              <option>SD</option>              
-              <option>TN</option>              
-              <option>TX</option>              
-              <option>UT</option>              
+              <option>MO</option>
+              <option>MT</option>
+              <option>NE</option>
+              <option>NV</option>
+              <option>NH</option>
+              <option>NJ</option>
+              <option>NM</option>
+              <option>NY</option>
+              <option>NC</option>
+              <option>ND</option>
+              <option>OH</option>
+              <option>OK</option>
+              <option>OR</option>
+              <option>PA</option>
+              <option>RI</option>
+              <option>SC</option>
+              <option>SD</option>
+              <option>TN</option>
+              <option>TX</option>
+              <option>UT</option>
               <option>VT</option>
               <option>VA</option>
               <option>WA</option>
@@ -88,14 +94,16 @@
               <option>WY</option>
             </select>
           </div>
+          <!-- search button -->
           <p>
             <button id="searchBtn" type="button" class="btn btn-primary">Search</button>
           </p>
         </form>
 
-        <!-- recent searches -->
+        <!-- clickable list of recent searches -->
         <div id="srcList" class="list-group hide">
           <div>
+            <!-- header for list -->
             <h5 class="card-header text-center">Recent Searches</h5>
           </div>
           <div id="recentSearches">
@@ -103,43 +111,21 @@
         </div>
       </aside>
 
-
+      <!-- center content of page -->
       <main class="col-sm-9 ml-5 px-0">
         <!-- today's forecast -->
         <section>
+          <!-- top portion where you find the city & today's forecast -->
           <div id="weather" class="px-0"></div>
         </section>
 
         <!-- 5-day forecast -->
-        <div id="5-day" class="mt-5 hide">
-          <h2 id="five-day">5-Day Forecast:</h2>
-        </div>
-        <section id="forecastCards" class="card-group row"></section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <section>
+          <div id="5-day" class="mt-5 hide">
+            <h2 id="five-day">5-Day Forecast:</h2>
+          </div>
+          <div id="forecastCards" class="card-group row"></div>
+        </section>
 
       </main>
 

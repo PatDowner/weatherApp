@@ -1,32 +1,35 @@
-aside {
-  opacity: .8;
-}
-
+/* Sets top header "Weather Dashboard" font size */
 #header {
   font-size: 36px;
 }
 
-#search {
+/* reduces opacity of side bar to make the color a little less intense */
+aside {
+  opacity: .8;
+}
+
+/* sets search button to full width of column*/
+#searchBtn {
   width: 100%;
 }
 
-.days {
-  max-width: 18rem;
-}
-
+/* used to hide elements when desired */
 .hide {
   display: none;
 }
 
+/* sets icon size for today's current weather */
 #today-icon {
   width: 40%;
   vertical-align: middle;
 }
 
+/* sets icon size for each of the five days of the 5-day forecast */
 .icon {
   width: 100%;
 }
 
+/* places 5-Day Forecast heading */
 #five-day {
   padding: 0px;
   width: 102%;
