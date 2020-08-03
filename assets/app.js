@@ -57,9 +57,9 @@ const todayWeather = (x, y) => {
           <div class="col-sm-6">
             <p id="today" class="card-text">
               <h3 id="today-weather">${res.data.weather[0].description}</h3>
-              <h4 id="today-temp">Temperature: ${res.data.main.temp}&#176;F</h4>
-              <h4 id="today-humidity">Humidity: ${res.data.main.humidity}%</h4>
-              <h4 id="today-wind">Wind: ${res.data.wind.speed} mph</h4>
+              <h4 id="today-temp">Temperature: ${Math.round(res.data.main.temp)}&#176;F</h4>
+              <h4 id="today-humidity">Humidity: ${Math.round(res.data.main.humidity)}%</h4>
+              <h4 id="today-wind">Wind: ${Math.round(res.data.wind.speed)} mph</h4>
               <h4>UV Index: <span id="uvIndex" class ="px-2"></span></h4>
             </p>
           </div>
@@ -80,7 +80,7 @@ const todayWeather = (x, y) => {
       axios.get(`http://api.openweathermap.org/data/2.5/uvi?appid=1dd25ac798a84daed3b612ef4b3c9a3e&lat=${lat}&lon=${lon}`)
         .then(res => {
           // setting part of the request as a variable to reduce repetition
-          let uv = res.data.value
+          let uv = Math.round(res.data.value)
 
           // sets text content of uvIndex to the value from the API ---- doesn't display on live version of site
           document.getElementById('uvIndex').textContent = uv
@@ -128,9 +128,9 @@ const forecastWeather = (x, y) => {
           <h6 id="day${i}-weather" class="card-subtitle mb-2 text-white">${forecast[i].weather[0].description}</h6>
           <div class="card-text">
             <p id="day${i}-icon" class="text-center icon mb-1"><img src="http://openweathermap.org/img/w/${forecast[i].weather[0].icon}.png"</p>
-            <p id="day${i}-temp" class="mb-1">Temperature: ${forecast[i].main.temp}&#176;F</p>
-            <p id="day${i}-humidity" class="mb-1">Humidity: ${forecast[i].main.humidity}%</p>
-            <p id="day${i}-wind" class="mb-1">Wind: ${forecast[i].wind.speed} mph</p>
+            <p id="day${i}-temp" class="mb-1">Temperature: ${Math.round(forecast[i].main.temp)}&#176;F</p>
+            <p id="day${i}-humidity" class="mb-1">Humidity: ${Math.round(forecast[i].main.humidity)}%</p>
+            <p id="day${i}-wind" class="mb-1">Wind: ${Math.round(forecast[i].wind.speed)} mph</p>
           </div>
         </div>
         `
