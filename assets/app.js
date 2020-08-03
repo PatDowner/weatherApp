@@ -72,6 +72,22 @@ const forecastWeather = (x) => {
     })
     .catch(err => { console.log(err) })
 }
+
+const recentSearchesList = (x) => {
+  i = x
+  // make new city an link item
+  let recentSearch = document.createElement('a')
+
+  // set classes for the link to become a list item for recentSearches
+  recentSearch.className = 'list-group-item list-group-item-action recentSrc'
+
+  // sets text to appear in the link list item
+  recentSearch.textContent = searches[i]
+
+  document.getElementById('recentSearches').append(recentSearch)
+
+  document.getElementById('srcList').classList.remove('hide')
+}
 console.log(searches)
 console.log(searches.length)
 console.log(searches.length - 9)
@@ -85,36 +101,16 @@ if (searches.length === 0) {
   forecastWeather(city)
   for (let i = (searches.length) - 1; i >= 0; i--) {
     console.log('loop')
-    // make new city an link item
-    let recentSearch = document.createElement('a')
-
-    // set classes for the link to become a list item for recentSearches
-    recentSearch.className = 'list-group-item list-group-item-action recentSrc'
-
-    // sets text to appear in the link list item
-    recentSearch.textContent = searches[i]
-
-    document.getElementById('recentSearches').append(recentSearch)
-
-    document.getElementById('srcList').classList.remove('hide')
+    recentSearchesList(i)
   }
 } else {
+  console.log(city)
+  todayWeather(city)
+  forecastWeather(city)
   for (let i = (searches.length); i > (searches.length) - 9; i--) {
-    console.log('loop')
-    // make new city an link item
-    let recentSearch = document.createElement('a')
+    recentSearchesList(i)
 
-    // set classes for the link to become a list item for recentSearches
-    recentSearch.className = 'list-group-item list-group-item-action recentSrc'
-
-    // sets text to appear in the link list item
-    recentSearch.textContent = searches[i]
-
-    document.getElementById('recentSearches').append(recentSearch)
-
-    document.getElementById('srcList').classList.remove('hide')
   }
-
 }
 
 
@@ -163,8 +159,8 @@ document.addEventListener('click', event => {
     city = event.target.textContent
     console.log(city)
 
-    todayWeather()
-    forecastWeather()
+    todayWeather(city)
+    forecastWeather(city)
 
     // store search in searches
 
