@@ -2,7 +2,6 @@ let searches = JSON.parse(localStorage.getItem('searches')) || []
 let city = ''
 let state = ''
 let itemObj = ''
-
 const recentSearchesList = (x) => {
   i = x
   // make new city an link item
@@ -31,35 +30,56 @@ const todayWeather = (x, y) => {
       // Set last 4 rows of today's forecast in a left column and set the right column with the corresponding icon
       // also set the city & date in 2 columns. Left column city left-aligned, right column date right-aligned
       document.getElementById('weather').innerHTML = `
-          <div class="card-header bg-primary row">
-            <div class="col-sm-6 px-0">
-              <h1 id="searchedCity">${res.data.name}</h1>
-            </div>
-            <div class="col-sm-6 text-right">
-              <h2 id="date">${moment().format('l')}</h2>
-            </div>
+      <div class="card-header bg-primary row">
+        <div class="col-sm-6 px-0">
+          <h1 id="searchedCity">${res.data.name}</h1>
+        </div>
+        <div class="col-sm-6 text-right">
+          <h2 id="date">${moment().format('l')}</h2>
+        </div>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">Today's Forecast:</h2>
+        <div class ="row">
+          <div class="col-sm-6">
+            <p id="today" class="card-text">
+              <h3 id="today-weather">${res.data.weather[0].description}</h3>
+              <h4 id="today-temp">Temperature: ${res.data.main.temp}</h4>
+              <h4 id="today-humidity">Humidity: ${res.data.main.humidity}</h4>
+              <h4 id="today-wind">Wind Speed: ${res.data.wind.speed}</h4>
+              <h4>UV Index: <span id="uvIndex" class ="px-2"></span></h4>
+            </p>
           </div>
-          <div class="card-body">
-          <h2 class="card-title">Today's Forecast:</h2>
-            <div class ="row">
-              <div class="col-sm-6">
-                <p id="today" class="card-text">
-                  <h3 id="today-weather">${res.data.weather[0].description}</h3>
-                  <h4 id="today-temp">Temperature: ${res.data.main.temp}</h4>
-                  <h4 id="today-humidity">Humidity: ${res.data.main.humidity}</h4>
-                  <h4 id="today-wind">Wind Speed: ${res.data.wind.speed}</h4>
-                </p>
-              </div>
-              <div class="col-sm-6">
-                <p >
-                  <img id="today-icon" src="http://openweathermap.org/img/w/${res.data.weather[0].icon}.png"
-                </p>
-              </div>
+          <div class="col-sm-6">
+            <p>
+            <img id="today-icon" src="http://openweathermap.org/img/w/${res.data.weather[0].icon}.png"
+            </p>
           </div>
-        `
+        </div>
+      </div>
+      `
+
+      let lon = res.data.coord.lon
+      let lat = res.data.coord.lat
+      axios.get(`http://api.openweathermap.org/data/2.5/uvi?appid=1dd25ac798a84daed3b612ef4b3c9a3e&lat=${lat}&lon=${lon}`)
+        .then(res => {
+          // let uv = res.data.value
+          let uv = 11
+          document.getElementById('uvIndex').textContent = uv
+
+          // Colors and color ranges taken from: https://www.epa.gov/sites/production/files/documents/uviguide.pdf
+          if (uv >= 0 && uv < 3) { document.getElementById("uvIndex").style.backgroundColor = "green" }
+          else if (uv >= 3 && uv < 6) { document.getElementById("uvIndex").style.backgroundColor = "yellow" }
+          else if (uv >= 6 && uv < 8) { document.getElementById("uvIndex").style.backgroundColor = "orange" }
+          else if (uv >= 8 && uv < 11) { document.getElementById("uvIndex").style.backgroundColor = "red" }
+          else { document.getElementById("uvIndex").style.backgroundColor = "blueviolet" }
+        })
+        .catch(err => { console.log(err) })
     })
     .catch(err => { console.log(err) })
 }
+
+
 
 const forecastWeather = (x, y) => {
   city = x
@@ -71,7 +91,7 @@ const forecastWeather = (x, y) => {
       document.getElementById('forecastCards').innerHTML = ''
 
       // loop to create the 5-day forecast
-      for (let i = 5; i < forecast.length; i += 8) {
+      for (let i = 3; i < forecast.length; i += 8) {
         console.log('forecast')
         let forecastElem = document.createElement('div')
         forecastElem.className = 'card text-white bg-primary days'
