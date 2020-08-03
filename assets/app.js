@@ -110,7 +110,6 @@ if (searches.length === 0) {
   todayWeather(city)
   forecastWeather(city)
   for (let i = (searches.length) - 1; i >= 0; i--) {
-    console.log('loop')
     recentSearchesList(i)
   }
 } else {
@@ -119,7 +118,6 @@ if (searches.length === 0) {
   forecastWeather(city)
   for (let i = (searches.length); i > (searches.length) - 9; i--) {
     recentSearchesList(i)
-
   }
 }
 
@@ -131,7 +129,6 @@ document.getElementById('searchBtn').addEventListener('click', event => {
   console.log('clicked')
 
   city = document.getElementById('citySrc').value
-
 
   todayWeather(city)
   forecastWeather(city)
