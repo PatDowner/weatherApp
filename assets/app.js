@@ -2,6 +2,22 @@ let searches = JSON.parse(localStorage.getItem('searches')) || []
 let city = ''
 let itemObj = ''
 
+const recentSearchesList = (x) => {
+  i = x
+  // make new city an link item
+  let recentSearch = document.createElement('a')
+
+  // set classes for the link to become a list item for recentSearches
+  recentSearch.className = 'list-group-item list-group-item-action recentSrc'
+
+  // sets text to appear in the link list item
+  recentSearch.textContent = searches[i]
+
+  document.getElementById('recentSearches').append(recentSearch)
+
+  document.getElementById('srcList').classList.remove('hide')
+}
+
 const todayWeather = (x) => {
   city = x
   axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=1dd25ac798a84daed3b612ef4b3c9a3e`)
@@ -73,21 +89,15 @@ const forecastWeather = (x) => {
     .catch(err => { console.log(err) })
 }
 
-const recentSearchesList = (x) => {
-  i = x
-  // make new city an link item
-  let recentSearch = document.createElement('a')
-
-  // set classes for the link to become a list item for recentSearches
-  recentSearch.className = 'list-group-item list-group-item-action recentSrc'
-
-  // sets text to appear in the link list item
-  recentSearch.textContent = searches[i]
-
-  document.getElementById('recentSearches').append(recentSearch)
-
-  document.getElementById('srcList').classList.remove('hide')
+const storeSearch = (x) => {
+  let city = x
+  // store search in searches
+  searches.push(city)
+  console.log(searches)
+  localStorage.setItem('searches', JSON.stringify(searches))
+  location.reload()
 }
+
 console.log(searches)
 console.log(searches.length)
 console.log(searches.length - 9)
@@ -125,12 +135,7 @@ document.getElementById('searchBtn').addEventListener('click', event => {
 
   todayWeather(city)
   forecastWeather(city)
-
-  // store search in searches
-
-  searches.push(city)
-  console.log(searches)
-  localStorage.setItem('searches', JSON.stringify(searches))
+  storeSearch(city)
 })
 
 // if click enter while in search bar
@@ -147,8 +152,9 @@ document.getElementById('citySrc').addEventListener('keyup', event => {
     city = document.getElementById('citySrc').value
 
 
-    todayWeather()
-    forecastWeather()
+    todayWeather(city)
+    forecastWeather(city)
+    storeSearch(city)
   }
 })
 
@@ -161,11 +167,6 @@ document.addEventListener('click', event => {
 
     todayWeather(city)
     forecastWeather(city)
-
-    // store search in searches
-
-    searches.push(city)
-    console.log(searches)
-    localStorage.setItem('searches', JSON.stringify(searches))
+    storeSearch(city)
   }
 })
