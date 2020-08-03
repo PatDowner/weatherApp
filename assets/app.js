@@ -1,11 +1,10 @@
 let searches = []
+let city = ''
 
-document.getElementById('search').addEventListener('click', event => {
-
-  event.preventDefault()
+const todayWeather = () => {
   console.log('clicked')
 
-  let city = document.getElementById('city').value
+  city = document.getElementById('citySrc').value
 
   axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=1dd25ac798a84daed3b612ef4b3c9a3e`)
     .then(res => {
@@ -40,7 +39,9 @@ document.getElementById('search').addEventListener('click', event => {
         `
     })
     .catch(err => { console.log(err) })
+}
 
+const forecastWeather = () => {
   axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=1dd25ac798a84daed3b612ef4b3c9a3e`)
     .then(res => {
       let forecast = res.data.list
@@ -73,4 +74,21 @@ document.getElementById('search').addEventListener('click', event => {
       document.getElementById('5-day').classList.remove('hide')
     })
     .catch(err => { console.log(err) })
+}
+
+// if click search button
+document.getElementById('searchBtn').addEventListener('click', event => {
+  event.preventDefault()
+  todayWeather()
+  forecastWeather()
+})
+
+// if click enter while in search bar
+document.getElementById('citySrc').addEventListener('keyup', event => {
+  event.preventDefault()
+  console.log(event.keyCode)
+  if (event.keyCode === 13) {
+    todayWeather()
+    forecastWeather()
+  }
 })
