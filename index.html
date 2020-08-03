@@ -30,10 +30,64 @@
       <!-- I'd love to find some boostrap stuff that has this collapse on narrow screens -->
       <aside class="col-sm-2 py-4 ml-2 bg-warning">
         <form>
-            <div class="form-group">
-              <label for="citySrc">Search for a City:</label>
-              <input type="text" class="form-control" name="citySrc" id="citySrc" placeholder="city name">
-            </div>
+          <div class="form-group">
+            <label for="citySrc">City:</label>
+            <input type="text" class="form-control" name="citySrc" id="citySrc" placeholder="city name">
+            <label for="stateSrc">State:</label>
+            <select class="form-control" id="stateSrc">
+              <option selected>Choose...</option>
+              <option>AL</option>
+              <option>AK</option>
+              <option>AZ</option>
+              <option>AR</option>
+              <option>CA</option>
+              <option>CO</option>
+              <option>CT</option>
+              <option>DE</option>
+              <option>FL</option>
+              <option>GA</option>
+              <option>HI</option>
+              <option>ID</option>
+              <option>IL</option>
+              <option>IN</option>
+              <option>IA</option>
+              <option>KS</option>
+              <option>KY</option>
+              <option>LA</option>
+              <option>ME</option>
+              <option>MD</option>
+              <option>MA</option>
+              <option>MI</option>
+              <option>MN</option>
+              <option>MS</option>
+              <option>MO</option>              
+              <option>MT</option>              
+              <option>NE</option>              
+              <option>NV</option>              
+              <option>NH</option>              
+              <option>NJ</option>              
+              <option>NM</option>              
+              <option>NY</option>              
+              <option>NC</option>              
+              <option>ND</option>              
+              <option>OH</option>              
+              <option>OK</option>              
+              <option>OR</option>              
+              <option>PA</option>              
+              <option>RI</option>              
+              <option>SC</option>              
+              <option>SD</option>              
+              <option>TN</option>              
+              <option>TX</option>              
+              <option>UT</option>              
+              <option>VT</option>
+              <option>VA</option>
+              <option>WA</option>
+              <option>WV</option>
+              <option>WI</option>
+              <option>WY</option>
+            </select>
+          </div>
           <p>
             <button id="searchBtn" type="button" class="btn btn-primary">Search</button>
           </p>
@@ -91,7 +145,8 @@
     </div>
 
     <footer class="card-footer text-muted text-center">&copy; 2020 |
-      Powered by <a href="https://getbootstrap.com/">Bootstrap</a> & <a href="https://openweathermap.org/api">OpenWeather
+      Powered by <a href="https://getbootstrap.com/">Bootstrap</a> & <a
+        href="https://openweathermap.org/api">OpenWeather
         API</a>
     </footer>
   </div>

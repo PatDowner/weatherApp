@@ -1,5 +1,6 @@
 let searches = JSON.parse(localStorage.getItem('searches')) || []
 let city = ''
+let state = ''
 let itemObj = ''
 
 const recentSearchesList = (x) => {
@@ -11,16 +12,17 @@ const recentSearchesList = (x) => {
   recentSearch.className = 'list-group-item list-group-item-action recentSrc'
 
   // sets text to appear in the link list item
-  recentSearch.textContent = searches[i]
+  recentSearch.textContent = `${searches[i].city}, ${searches[i].state}`
 
   document.getElementById('recentSearches').append(recentSearch)
 
   document.getElementById('srcList').classList.remove('hide')
 }
 
-const todayWeather = (x) => {
+const todayWeather = (x, y) => {
   city = x
-  axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=1dd25ac798a84daed3b612ef4b3c9a3e`)
+  state = y
+  axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city},${state},us&units=imperial&appid=1dd25ac798a84daed3b612ef4b3c9a3e`)
     .then(res => {
       console.log(res.data)
 
@@ -59,9 +61,10 @@ const todayWeather = (x) => {
     .catch(err => { console.log(err) })
 }
 
-const forecastWeather = (x) => {
+const forecastWeather = (x, y) => {
   city = x
-  axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=1dd25ac798a84daed3b612ef4b3c9a3e`)
+  state = y
+  axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city},${state},us&units=imperial&appid=1dd25ac798a84daed3b612ef4b3c9a3e`)
     .then(res => {
       let forecast = res.data.list
       // prevents it from duplicating the 5-day forecast if the search button is clicked again (because the loop appends instead of replacing)
@@ -93,10 +96,13 @@ const forecastWeather = (x) => {
     .catch(err => { console.log(err) })
 }
 
-const storeSearch = (x) => {
-  let city = x
+const storeSearch = (x, y) => {
+  let cityState = {
+    city: city = x,
+    state: state = y
+  }
   // store search in searches
-  searches.push(city)
+  searches.push(cityState)
   console.log(searches)
   localStorage.setItem('searches', JSON.stringify(searches))
   location.reload()
@@ -109,17 +115,20 @@ console.log(searches.length - 9)
 if (searches.length === 0) {
   console.log(0)
 } else if (searches.length <= 9) {
-  city = searches[searches.length - 1]
-  console.log(city)
-  todayWeather(city)
-  forecastWeather(city)
+  city = searches[searches.length - 1].city
+  state = searches[searches.length - 1].state
+  console.log(city, state)
+  todayWeather(city, state)
+  forecastWeather(city, state)
   for (let i = (searches.length) - 1; i >= 0; i--) {
     recentSearchesList(i)
   }
 } else {
-  console.log(city)
-  todayWeather(city)
-  forecastWeather(city)
+  city = searches[searches.length - 1].city
+  state = searches[searches.length - 1].state
+  console.log(city, state)
+  todayWeather(city, state)
+  forecastWeather(city, state)
   for (let i = (searches.length); i > (searches.length) - 9; i--) {
     recentSearchesList(i)
   }
@@ -133,10 +142,11 @@ document.getElementById('searchBtn').addEventListener('click', event => {
   console.log('clicked')
 
   city = document.getElementById('citySrc').value
+  state = document.getElementById('stateSrc').value
 
-  todayWeather(city)
-  forecastWeather(city)
-  storeSearch(city)
+  todayWeather(city, state)
+  forecastWeather(city, state)
+  storeSearch(city, state)
 })
 
 // if click enter while in search bar
@@ -151,23 +161,32 @@ document.getElementById('citySrc').addEventListener('keyup', event => {
     console.log('clicked')
 
     city = document.getElementById('citySrc').value
+    state = document.getElementById('stateSrc').value
 
 
-    todayWeather(city)
-    forecastWeather(city)
-    storeSearch(city)
+    todayWeather(city, state)
+    forecastWeather(city, state)
+    storeSearch(city, state)
   }
 })
 
 document.addEventListener('click', event => {
   if (event.target.classList.contains('recentSrc')) {
     console.log('clicked')
+    const splitCity = () => {
+      let str = event.target.textContent
+      let res = str.split(", ")
 
-    city = event.target.textContent
-    console.log(city)
+      city = res[0]
+      console.log(city)
+      state = res[1]
+      console.log(state)
+    }
 
-    todayWeather(city)
-    forecastWeather(city)
-    storeSearch(city)
+    splitCity()
+
+    todayWeather(city, state)
+    forecastWeather(city, state)
+    storeSearch(city, state)
   }
 })
