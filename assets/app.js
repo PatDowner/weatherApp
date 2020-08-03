@@ -82,7 +82,7 @@ const todayWeather = (x, y) => {
           // setting part of the request as a variable to reduce repetition
           let uv = res.data.value
 
-          // sets text content of uvIndex to the value from the API
+          // sets text content of uvIndex to the value from the API ---- doesn't display on live version of site
           document.getElementById('uvIndex').textContent = uv
 
           // Colors and color ranges below taken from: https://www.epa.gov/sites/production/files/documents/uviguide.pdf are used to indicate levels
@@ -187,7 +187,7 @@ if (searches.length === 0) {
   // display 5-day forecast for most recently searched city
   forecastWeather(city, state)
   // runs function to populate the searches list
-  for (let i = (searches.length) - 1; i >= 0; i--) {
+  for (let i = (searches.length) - 1; i >= (searches.length) - 9; i--) {
     recentSearchesList(i)
   }
 }
