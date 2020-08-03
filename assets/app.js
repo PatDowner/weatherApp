@@ -65,7 +65,7 @@ const todayWeather = (x, y) => {
           </div>
           <div class="col-sm-6">
             <p>
-            <img id="today-icon" src="http://openweathermap.org/img/w/${res.data.weather[0].icon}.png"
+            <img id="today-icon" src="https://openweathermap.org/img/w/${res.data.weather[0].icon}.png"
             </p>
           </div>
         </div>
