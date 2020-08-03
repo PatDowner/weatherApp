@@ -2,13 +2,8 @@ let searches = JSON.parse(localStorage.getItem('searches')) || []
 let city = ''
 let itemObj = ''
 
-
-
-const todayWeather = () => {
-  console.log('clicked')
-
-  city = document.getElementById('citySrc').value
-
+const todayWeather = (x) => {
+  city = x
   axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=1dd25ac798a84daed3b612ef4b3c9a3e`)
     .then(res => {
       console.log(res.data)
@@ -44,7 +39,8 @@ const todayWeather = () => {
     .catch(err => { console.log(err) })
 }
 
-const forecastWeather = () => {
+const forecastWeather = (x) => {
+  city = x
   axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=1dd25ac798a84daed3b612ef4b3c9a3e`)
     .then(res => {
       let forecast = res.data.list
@@ -53,12 +49,10 @@ const forecastWeather = () => {
 
       // loop to create the 5-day forecast
       for (let i = 5; i < forecast.length; i += 8) {
-        console.log(forecast[i])
+        console.log('forecast')
         let forecastElem = document.createElement('div')
         forecastElem.className = 'card text-white bg-primary days'
         forecastElem.id = `day${i}`
-        console.log(forecast[i].weather[0].description)
-        console.log(forecast[i].weather[0].icon)
         forecastElem.innerHTML = `
         <div class="card-body">
           <h5 id="day${i}-day" class="card-title day${i}-day">${moment(forecast[i].dt_txt).format('dddd')}, ${moment(forecast[i].dt_txt).format('l')}</h5>
@@ -78,14 +72,63 @@ const forecastWeather = () => {
     })
     .catch(err => { console.log(err) })
 }
+console.log(searches)
+console.log(searches.length)
+console.log(searches.length - 9)
+
+if (searches.length === 0) {
+  console.log(0)
+} else if (searches.length <= 9) {
+  city = searches[searches.length - 1]
+  console.log(city)
+  todayWeather(city)
+  forecastWeather(city)
+  for (let i = (searches.length) - 1; i >= 0; i--) {
+    console.log('loop')
+    // make new city an link item
+    let recentSearch = document.createElement('a')
+
+    // set classes for the link to become a list item for recentSearches
+    recentSearch.className = 'list-group-item list-group-item-action recentSrc'
+
+    // sets text to appear in the link list item
+    recentSearch.textContent = searches[i]
+
+    document.getElementById('recentSearches').append(recentSearch)
+
+    document.getElementById('srcList').classList.remove('hide')
+  }
+} else {
+  for (let i = (searches.length); i > (searches.length) - 9; i--) {
+    console.log('loop')
+    // make new city an link item
+    let recentSearch = document.createElement('a')
+
+    // set classes for the link to become a list item for recentSearches
+    recentSearch.className = 'list-group-item list-group-item-action recentSrc'
+
+    // sets text to appear in the link list item
+    recentSearch.textContent = searches[i]
+
+    document.getElementById('recentSearches').append(recentSearch)
+
+    document.getElementById('srcList').classList.remove('hide')
+  }
+
+}
+
 
 // if click search button
 document.getElementById('searchBtn').addEventListener('click', event => {
   event.preventDefault()
 
+  console.log('clicked')
 
-  todayWeather()
-  forecastWeather()
+  city = document.getElementById('citySrc').value
+
+
+  todayWeather(city)
+  forecastWeather(city)
 
   // store search in searches
 
@@ -96,10 +139,37 @@ document.getElementById('searchBtn').addEventListener('click', event => {
 
 // if click enter while in search bar
 document.getElementById('citySrc').addEventListener('keyup', event => {
+
   event.preventDefault()
+
   console.log(event.keyCode)
+
   if (event.keyCode === 13) {
+
+    console.log('clicked')
+
+    city = document.getElementById('citySrc').value
+
+
     todayWeather()
     forecastWeather()
+  }
+})
+
+document.addEventListener('click', event => {
+  if (event.target.classList.contains('recentSrc')) {
+    console.log('clicked')
+
+    city = event.target.textContent
+    console.log(city)
+
+    todayWeather()
+    forecastWeather()
+
+    // store search in searches
+
+    searches.push(city)
+    console.log(searches)
+    localStorage.setItem('searches', JSON.stringify(searches))
   }
 })
