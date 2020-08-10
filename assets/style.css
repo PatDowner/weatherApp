@@ -1,3 +1,8 @@
+/* used to hide elements when desired */
+.hide {
+  display: none;
+}
+
 /* Sets top header "Weather Dashboard" font size */
 #header {
   font-size: 36px;
@@ -13,9 +18,8 @@ aside {
   width: 100%;
 }
 
-/* used to hide elements when desired */
-.hide {
-  display: none;
+#recentSearches {
+  text-transform: capitalize;
 }
 
 /* sets icon size for today's current weather */
@@ -24,14 +28,14 @@ aside {
   vertical-align: middle;
 }
 
-/* sets icon size for each of the five days of the 5-day forecast */
-.icon {
-  width: 100%;
-}
-
 /* places 5-Day Forecast heading */
 #five-day {
   padding: 0px;
   width: 102%;
   margin-left: -14px;
+}
+
+/* sets icon size for each of the five days of the 5-day forecast */
+.icon {
+  width: 100%;
 }

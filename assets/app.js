@@ -45,7 +45,7 @@ const todayWeather = (x, y) => {
       document.getElementById('weather').innerHTML = `
       <div class="card-header bg-primary row">
         <div class="col-sm-6 px-0">
-          <h1 id="searchedCity">${res.data.name}</h1>
+          <h1 id="searchedCity">${res.data.name}, ${state}</h1>
         </div>
         <div class="col-sm-6 text-right">
           <h2 id="date">${moment().format('l')}</h2>
